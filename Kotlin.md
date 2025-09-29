@@ -17,3 +17,15 @@ val letter: Char = 'A'
 val message: String = "Hello Kotlin"
 
 ```
+
+In Android XML → Kotlin:
+
+```kotlin
+<TextView android:text="Hello"/>
+```
+
+```kotlin
+val textView: TextView = findViewById(R.id.myText)
+textView.text = "Hello Kotlin"
+
+```
