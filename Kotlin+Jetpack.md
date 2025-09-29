@@ -202,3 +202,115 @@ A number that increases each time you press "Increase Count".
 
 A growing list of items each time you press "Add Item".
 
+<h2>Demo 2</h2>
+
+Perfect Buddy 🚀 Let’s upgrade your mini app into a To-Do App with Compose.
+You’ll learn:
+
+TextField for input
+
+Adding items dynamically
+
+Deleting items
+
+<h2>✅ Jetpack Compose To-Do App</h2>
+
+```kotlin
+
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MaterialTheme {
+                ToDoApp()
+            }
+        }
+    }
+}
+
+@Composable
+fun ToDoApp() {
+    var taskText by remember { mutableStateOf("") }
+    var tasks = remember { mutableStateListOf<String>() }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Input field
+        OutlinedTextField(
+            value = taskText,
+            onValueChange = { taskText = it },
+            label = { Text("Enter task") },
+            modifier = Modifier.fillMaxWidth()
+        )
+
+        Spacer(Modifier.height(8.dp))
+
+        // Add button
+        Button(
+            onClick = {
+                if (taskText.isNotBlank()) {
+                    tasks.add(taskText)
+                    taskText = "" // clear input
+                }
+            }
+        ) {
+            Text("Add Task")
+        }
+
+        Spacer(Modifier.height(16.dp))
+
+        // Task list
+        LazyColumn {
+            items(tasks) { task ->
+                TaskRow(task, onDelete = { tasks.remove(task) })
+            }
+        }
+    }
+}
+
+@Composable
+fun TaskRow(task: String, onDelete: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(task, style = MaterialTheme.typography.bodyLarge)
+        Button(onClick = onDelete) {
+            Text("Delete")
+        }
+    }
+}
+
+```
+
+<h2> 🔥 Features </h2>
+
+Add tasks with a TextField
+
+Press Add Task → task goes to the list
+
+Each task has a Delete button
+
+Uses mutableStateListOf to keep the list reactive
+
+👉 Run this, and you’ll have your first working app in Kotlin + Jetpack Compose 🎉
+
