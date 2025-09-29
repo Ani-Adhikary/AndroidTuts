@@ -32,3 +32,79 @@ fun CounterApp() {
 ```
 
 💡 count behaves like a live variable → UI updates automatically.
+
+<h2> 3. Conditionals </h2>
+
+```kotlin
+
+@Composable
+fun AgeCheck(age: Int) {
+    if (age >= 18) {
+        Text("You are an Adult")
+    } else {
+        Text("You are a Minor")
+    }
+}
+
+```
+
+<h2>4. Loops</h2>
+
+```kotlin
+
+@Composable
+fun NumberList() {
+    Column {
+        for (i in 1..5) {
+            Text("Item $i")
+        }
+    }
+}
+
+```
+
+<h2> 5. Functions </h2>
+
+```kotlin
+
+fun add(a: Int, b: Int) = a + b
+
+@Composable
+fun ShowSum() {
+    val result = add(5, 7)
+    Text("Sum = $result")
+}
+
+```
+
+<h2> 6. Classes & Objects </h2>
+
+ ```kotlin
+
+data class User(val name: String, val age: Int)
+
+@Composable
+fun UserCard(user: User) {
+    Text("Name: ${user.name}, Age: ${user.age}")
+}
+
+```
+
+Usage:
+
+```kotlin
+
+UserCard(User("Buddy", 25))
+
+```
+
+<h2> 7. Null Safety in Compose </h2>
+
+```kotlin
+
+@Composable
+fun ShowName(name: String?) {
+    Text(text = name ?: "No Name")  // Elvis operator → default value
+}
+
+```
