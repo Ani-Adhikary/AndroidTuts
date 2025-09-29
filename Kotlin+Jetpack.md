@@ -108,3 +108,11 @@ fun ShowName(name: String?) {
 }
 
 ```
+
+<h2> 👉 With just these, you can already build small apps like: </h2>
+
+Counter ✔️
+
+To-do list ✔️
+
+Simple login screen ✔️
