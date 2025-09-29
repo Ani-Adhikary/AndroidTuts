@@ -6,3 +6,14 @@ var name = "Buddy"   // mutable (can change)
 val age = 25         // immutable (like const in Swift)
 
 ```
+
+<h2>2. Data Types </h2>
+
+```kotlin
+val isLoggedIn: Boolean = true
+val score: Int = 100
+val pi: Double = 3.14
+val letter: Char = 'A'
+val message: String = "Hello Kotlin"
+
+```
