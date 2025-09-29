@@ -116,3 +116,89 @@ Counter ✔️
 To-do list ✔️
 
 Simple login screen ✔️
+
+<h2>Demo</h2>
+
+Perfect Buddy 🙌 Let’s build your first mini Jetpack Compose app step by step.
+We’ll do a Counter + List + Button Clicks all in one → this will give you Kotlin + Compose confidence.
+
+
+```kotlin
+import android.os.Bundle
+import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+
+class MainActivity : ComponentActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContent {
+            MaterialTheme {
+                MiniApp()
+            }
+        }
+    }
+}
+
+@Composable
+fun MiniApp() {
+    var count by remember { mutableStateOf(0) }
+    var items = remember { mutableStateListOf<String>() }
+
+    Column(
+        modifier = Modifier.fillMaxSize().padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        // Counter
+        Text("Count: $count", style = MaterialTheme.typography.headlineMedium)
+
+        Spacer(Modifier.height(8.dp))
+
+        Button(onClick = { count++ }) {
+            Text("Increase Count")
+        }
+
+        Spacer(Modifier.height(16.dp))
+
+        // Add item to list
+        Button(onClick = { items.add("Item #${items.size + 1}") }) {
+            Text("Add Item")
+        }
+
+        Spacer(Modifier.height(16.dp))
+
+        // Show list
+        LazyColumn {
+            items(items) { item ->
+                Text(text = item, style = MaterialTheme.typography.bodyLarge)
+            }
+        }
+    }
+}
+
+```
+
+
+<h2>🔥 What This App Does </h2>
+
+Shows a counter (count) → updates when button clicked.
+
+Maintains a list (items) → each button press adds a new item.
+
+Uses LazyColumn for scrolling list.
+
+Demonstrates Kotlin basics (variables, loops, null safety) inside Compose.
+
+<h2>👉 If you run this in Android Studio, you’ll see: </h2>
+
+A number that increases each time you press "Increase Count".
+
+A growing list of items each time you press "Add Item".
+
